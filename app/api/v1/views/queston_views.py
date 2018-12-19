@@ -38,6 +38,31 @@ def get_all_questions():
         return jsonify({"Questions": question.show_questions()}), 200
     abort(404)
 
+@version1.route('/api/v1/questions/<int:question_id>/', methods=['GET','POST','PUT','DELETE'])
+def get_a_specific_question(question_id):
+    """
+    Get a specific question.
+    """
+    if request.method == 'GET':
+        qn_list = question.show_questions()
+        quiz = [quiz for quiz in qn_list if quiz["id"] == question_id]
+        if quiz:
+            quiz_answers = answer.show_answers(quiz[0]["id"])
+            quiz[0]["answers"] = quiz_answers
+            return jsonify({"Question": quiz}), 200
+        abort(404)
+    elif request.method == "POST":
+        if not request.json or not "updated_answer" in request.json:
+            abort(404)
+        new_answer = {
+            "id": answer_list[-1]["id"]+1,
+            "updated_answer": request.json["updated_answer"],
+            "date_posted":"1900hrs",
+            "question_id": question_id
+        }
+        answer.add_answer(new_answer)
+        return jsonify({"Answer":new_answer})
+
 
 
 
