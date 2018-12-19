@@ -82,7 +82,14 @@ def post_question():
     question.add_question(post_qn)
     return jsonify({'question': post_qn}), 201        
 
-
+@version1.route('/api/v1/delete_question/<int:question_id>', methods=['DELETE'])
+def delete_question(question_id):
+    """
+    Delete a question.
+    """
+    if question.delete_question(question_id):
+        return jsonify({"Success": "Question deleted successfully"}),200
+    abort(404)
 
 
 
