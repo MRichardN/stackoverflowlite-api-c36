@@ -38,7 +38,6 @@ def get_all_questions():
         return jsonify({"Questions": question.show_questions()}), 200
     abort(404)
 
-
 @version1.route('/api/v1/questions/<int:question_id>/', methods=['GET','POST','PUT','DELETE'])
 def get_a_specific_question(question_id):
     """
@@ -82,6 +81,27 @@ def post_question():
     question.add_question(post_qn)
     return jsonify({'question': post_qn}), 201        
 
+
+@version1.route('/api/v1/update_question/<int:question_id>/', methods=["PUT"])
+def update_question(question_id):
+    """
+    Update a question.
+    """
+    if not request.json:
+          abort(400)
+    if 'title' in request.json and type(request.json['title']) != str:
+         abort(400)
+    if 'description' in request.json and type(request.json['description']) is not str:
+        abort(400)
+    current_question = [current_question for current_question in question_list if current_question["id"]==question_id]
+    if current_question:
+        title = request.json.get('title', current_question[0]["title"])
+        description = request.json.get('description', current_question[0]['description'])
+        date_posted = datetime.datetime.now()
+        updated_question = question.update_question(question_id, title, description, date_posted)
+        return jsonify({"Question": updated_question}),201
+    abort(404)
+    
 @version1.route('/api/v1/delete_question/<int:question_id>', methods=['DELETE'])
 def delete_question(question_id):
     """
@@ -90,7 +110,6 @@ def delete_question(question_id):
     if question.delete_question(question_id):
         return jsonify({"Success": "Question deleted successfully"}),200
     abort(404)
-
 
 
 
