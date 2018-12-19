@@ -38,6 +38,7 @@ def get_all_questions():
         return jsonify({"Questions": question.show_questions()}), 200
     abort(404)
 
+
 @version1.route('/api/v1/questions/<int:question_id>/', methods=['GET','POST','PUT','DELETE'])
 def get_a_specific_question(question_id):
     """
@@ -62,6 +63,25 @@ def get_a_specific_question(question_id):
         }
         answer.add_answer(new_answer)
         return jsonify({"Answer":new_answer})
+
+
+@version1.route('/api/v1/add_question/', methods=["POST"])
+def post_question():
+    """
+    Post a question.
+    """
+    if not request.json or not 'title' in request.json:
+        abort(400)
+    post_qn = {
+    'id': question_list[-1]['id'] + 1,
+    'title': request.json['title'],
+    'description': request.json['description'],
+    'date_posted': datetime.datetime.now(),
+    "answer": 0
+    }
+    question.add_question(post_qn)
+    return jsonify({'question': post_qn}), 201        
+
 
 
 
