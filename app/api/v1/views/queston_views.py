@@ -101,6 +101,15 @@ def update_question(question_id):
         updated_question = question.update_question(question_id, title, description, date_posted)
         return jsonify({"Question": updated_question}),201
     abort(404)
+    
+@version1.route('/api/v1/delete_question/<int:question_id>', methods=['DELETE'])
+def delete_question(question_id):
+    """
+    Delete a question.
+    """
+    if question.delete_question(question_id):
+        return jsonify({"Success": "Question deleted successfully"}),200
+    abort(404)
 
 
 
