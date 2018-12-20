@@ -8,23 +8,40 @@ StackOverflow-lite is a platform where people can ask questions and provide answ
 
 ## Installation
 1. Clone this repository :
-	`$ git clone https://github.com/MRichardN/stackoverflowlite-api-c36.git`
+
+	```
+    $ git clone https://github.com/MRichardN/stackoverflowlite-api-c36.git
+    ```
 
 2. CD into the project folder on your machine
-	`$ cd stack-overflow-lite-api-c36`
+
+	```
+    $ cd stack-overflow-lite-api-c36
+    ```
 
 3. Create a virtual environment
-	`$ python3 -m venv venv`
+
+	```$ python3 -m venv venv
+    ```
 
 4. Activate the virtual environment
-	`$ . venv/bin/activate`
+
+	```
+    $ . venv/bin/activate
+    ```
 
 5. Install the dependencies from the requirements file
-	`$ pip install -r requirements.txt`
-    `$ pip install python-dotenv`
+
+	```
+    $ pip install -r requirements.txt
+    $ pip install python-dotenv
+    ```
 
 6. Run the application
-    `python3 run.py`
+
+    ```
+    python3 run.py
+    ```
 
 ## Testing API endpoint
 
