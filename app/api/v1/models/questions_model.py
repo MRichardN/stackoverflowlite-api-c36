@@ -57,7 +57,7 @@ class Answer(object):
         """
         show  answers.
         """
-        answers = [answers for answers in self.answer_list if answers["question_id"] == question_id]
+        answers = [answer for answer in self.answer_list if answer["question_id"] == question_id]
         if answers:
             return answers
 
