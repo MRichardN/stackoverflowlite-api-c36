@@ -1,7 +1,8 @@
 
 import datetime
 from flask import Blueprint, request, jsonify, abort, make_response 
-from app.api.v1.models.questions_model import Question, Answer
+from app.api.v1.models.questions_model import Question
+from app.api.v1.models.answer_model import Answer
 from app.api.v1.models import question_list, answer_list
 
 
@@ -26,15 +27,15 @@ def bad_method(error):
     """
     return make_response(jsonify({'Failed': 'bad request'}))
 
-@version1.route("/api/v1/questions/", methods=["GET","POST"])
+@version1.route('/api/v1/questions/', methods=["GET","POST"])
 def get_all_questions():
     """
     View all questions.
     """
     if question:
-        for quiz in question.show_questions():
+        #for quiz in question.show_questions():
             #retrieve number of answers
-            quiz["answer"]=len(answer.show_answers(quiz["id"]))
+            #quiz["answer"] = len(answer.show_answers(quiz["id"]))
         return jsonify({"Questions": question.show_questions()}), 200
     abort(404)
 
@@ -99,7 +100,7 @@ def update_question(question_id):
         description = request.json.get('description', current_question[0]['description'])
         date_posted = datetime.datetime.now()
         updated_question = question.update_question(question_id, title, description, date_posted)
-        return jsonify({"Question": updated_question}),201
+        return jsonify({"Question": updated_question}), 201
     abort(404)
     
 @version1.route('/api/v1/delete_question/<int:question_id>', methods=['DELETE'])
@@ -108,7 +109,7 @@ def delete_question(question_id):
     Delete a question.
     """
     if question.delete_question(question_id):
-        return jsonify({"Success": "Question deleted successfully"}),200
+        return jsonify({"Success": "Question deleted successfully"}), 200
     abort(404)
 
 

@@ -1,5 +1,5 @@
 
-from app.api.v1.views import queston_views
+import app.api.v1.views.queston_views
 
 question_list=[{
     "id": 1,

@@ -3,8 +3,7 @@
 """
 Main file.
 """
-from flask import Flask  
-#from flask import Flask ,Blueprint
+from flask import Flask
 from app.api.v1.views.queston_views import version1
 from instance.config import app_config
 

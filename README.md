@@ -21,7 +21,8 @@ StackOverflow-lite is a platform where people can ask questions and provide answ
 
 3. Create a virtual environment
 
-	```$ python3 -m venv venv
+	```
+    $ python3 -m venv venv
     ```
 
 4. Activate the virtual environment
@@ -45,13 +46,13 @@ StackOverflow-lite is a platform where people can ask questions and provide answ
 
 ## Testing API endpoint
 
-| Endpoint                             | HTTP Verb   | Functionality |
-| ------------------------------------ | ----------- | ------------- |
-| /api/v1/delete_question/question_id  | DELETE      | Delete a question |
-| /api/v1/update_question/question_id/ | PUT         | Update a question
-| /api/v1/add_question/                | POST        | Post a question  |
+| Endpoint                             | HTTP Verb   | Functionality           |
+| ------------------------------------ | ----------- | ----------------------- |
+| /api/v1/delete_question/question_id  | DELETE      | Delete a question       |
+| /api/v1/update_question/question_id/ | PUT         | Update a question       |       
+| /api/v1/add_question/                | POST        | Post a question         |
 | /api/v1/questions/question_id/       | GET         | Get a specific question |
-| /api/v1/questions/                   | GET         | Get all questions   |
+| /api/v1/questions/                   | GET         | Get all questions       |
 
 
 ## Authors
