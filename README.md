@@ -22,7 +22,11 @@ StackOverflow-lite is a platform where people can ask questions and provide answ
 3. Create a virtual environment
 
 	```
+<<<<<<< HEAD
     $ python3 -m venv venv
+=======
+	$ python3 -m venv venv
+>>>>>>> a1d0a883a1b5d2131354c0f1f486143dad8ec021
     ```
 
 4. Activate the virtual environment
