@@ -13,8 +13,12 @@ install:
   - pip install coverage
   - pip install nose
 
+env:
+  - FLASK_VERSION=1.0.2
+
 script: 
   - nosetest --with-coverage --cover-package=app
+  - coveralls
 
 after_success:
   - coveralls
