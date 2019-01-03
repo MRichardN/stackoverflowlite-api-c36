@@ -17,12 +17,7 @@ class TestStackOverflow(unittest.TestCase):
         response = self.client.post('/api/v1/add_question/', data=json.dumps(self.questions), content_type = 'application/json')
         self.assertEqual(response.status_code, 201)
         
-        
-
-    
-    def test_delete_question(self):
-        pass
-        
+     
 
     def test_update_question(self):
         """ Test editing a question."""
